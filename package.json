@@ -1,11 +1,18 @@
 {
-  "name": "todo-app",
+  "name": "boardly",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "workspaces": [
+    ".",
+    "api"
+  ],
   "scripts": {
     "dev:app": "vite --config apps/src/app/vite.config.js",
-    "build": "vite build --config apps/src/app/vite.config.js",
+    "dev:api": "npm run start:dev --prefix apps/src/api",
+    "build:app": "vite build --config apps/src/app/vite.config.js",
+    "build:api": "npm run build --prefix apps/src/api",
+    "build": "npm run build:app && npm run build:api",
     "lint": "eslint .",
     "preview": "vite preview --config apps/src/app/vite.config.js"
   },
@@ -16,11 +23,13 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
+    "axios": "^1.12.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "@nestjs/cli": "^11.0.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
