@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(uuid())
+  firstName   String
+  lastName    String
+  email       String   @unique
+  mobilePhone String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum DBTaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model Task {
+  id          String         @id @default(uuid())
+  title       String
+  description String
+  isDeleted   Boolean // soft delete
+  priority    DBTaskPriority
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  // add atachments, add created by, add edited by
+}
