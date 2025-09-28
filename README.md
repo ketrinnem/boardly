@@ -22,7 +22,7 @@ Clone the repo
 
 Install dependencies (npm install / yarn install)
 
-Run the app (npm start / yarn start)
+Run the app (npm run dev:app - client, npm run dev:api - server)
 
 ## Notes
 
