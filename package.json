@@ -8,13 +8,13 @@
     "api"
   ],
   "scripts": {
-    "dev:app": "vite --config apps/src/app/vite.config.js",
-    "dev:api": "npm run start:dev --prefix apps/src/api",
-    "build:app": "vite build --config apps/src/app/vite.config.js",
-    "build:api": "npm run build --prefix apps/src/api",
+    "dev:app": "vite --config vite.config.js",
+    "dev:api": "npm run start:dev --prefix api",
+    "build:app": "vite build --configvite.config.js",
+    "build:api": "npm run build --prefix api",
     "build": "npm run build:app && npm run build:api",
     "lint": "eslint .",
-    "preview": "vite preview --config apps/src/app/vite.config.js"
+    "preview": "vite preview --config vite.config.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
