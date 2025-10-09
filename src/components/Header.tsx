@@ -14,7 +14,7 @@ const Header = () => {
         </Text>
         <Search />
 
-        <div style={{ width: "100px", display: "flex", gap: "10px" }}>
+        <div style={{ width: "100px", display: "flex", gap: "10px", justifyContent: "center" }}>
           <Link
             href="https://github.com/ketrinnem?tab=repositories"
             underline="none"
@@ -40,24 +40,31 @@ const Header = () => {
 const Wrapper = styled.div`
   height: 60px;
   background-color: #3e69ad;
-  border-bottom: #5d6c85;
-  padding: 16px;
-  border-radius: 16px;
-`;
+  border-bottom: 2px solid #5d6c85; 
+  padding: 0 16px;
+  box-sizing: border-box; 
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  position: fixed;  
+  top: 0;           
+  left: 0;           
+  width: 100vw;      
+  z-index: 1000;    
+`
 
 const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
 `;
 
 const Text = styled.div`
-  color: lightblue;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
+color: lightblue;
+display: flex;
+align - items: center;
+gap: 10px;
 `;
 
 export default Header;

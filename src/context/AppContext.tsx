@@ -7,6 +7,8 @@ export interface Item {
   description: string;
   priority: string;
   column: string; // "todo" | "in-progress" | "in-review" | "done";
+  type?: string; // "feature" | "bug";
+  origin?: string; // "frontend" | "backend" | "design" | "devops" | "db";
 }
 
 interface IAppContext {
@@ -18,9 +20,9 @@ interface IAppContext {
 
 export const AppContext = React.createContext<IAppContext>({
   items: mockTodos,
-  setItems: () => {},
+  setItems: () => { },
   searchText: "",
-  setSearchText: () => {},
+  setSearchText: () => { },
 });
 
 export const useAppContext = (): IAppContext => {

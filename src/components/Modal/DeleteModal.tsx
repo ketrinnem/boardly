@@ -12,8 +12,6 @@ interface DeleteModalProps {
 const DeleteModal = (props: DeleteModalProps) => {
   const { isOpen, onCancel, onDelete } = props;
 
-  console.log(isOpen, '===> DeleteModal isOpen prop')
-
   return (
     <Modal open={isOpen}>
       <Wrapper>
@@ -24,7 +22,7 @@ const DeleteModal = (props: DeleteModalProps) => {
             color="info"
             sx={{ width: "20%", height: "50px" }}
             startIcon={<CancelIcon />}
-            onClick={onCancel}
+            onMouseDown={onCancel}
           >
             CANCEL
           </Button>
@@ -34,7 +32,7 @@ const DeleteModal = (props: DeleteModalProps) => {
             color="error"
             sx={{ width: "20%", height: "50px" }}
             startIcon={<DeleteIcon />}
-            onClick={onDelete}
+            onMouseDown={onDelete}
           >
             DELETE
           </Button>

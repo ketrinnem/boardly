@@ -3,7 +3,7 @@ import { Button, Modal, TextField } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
-import { AppContext, Item } from "../context/AppContext";
+import { AppContext, Item } from "../../context/AppContext";
 import { useContext, useState } from "react";
 
 interface AddItemModal {

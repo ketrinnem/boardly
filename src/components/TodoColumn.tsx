@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import ListItem from "./ListItem";
 import { useContext, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
-import AddItemModal from "./AddItemModal";
+import AddItemModal from "./Modal/AddItemModal";
 import { AppContext, Item } from "../context/AppContext";
+import { DragOverlay } from "@dnd-kit/core";
 
 interface TodoColumnProps {
   title: string;
@@ -32,19 +33,18 @@ const TodoColumn = (props: TodoColumnProps) => {
       <Title>
         <div>{title}</div>
         <div
-          style={{ color: "lightgray" }}
+          style={{ color: "lightgray", fontSize: "12px" }}
         >{`${items.length} ${cardsText}`}</div>
       </Title>
 
       <ItemsContainer>
         {items.map((item, idx) => (
           <ListItem
-            key={item.id}
-            title={item.title}
+            key={`${item.title}-${item.id}`}
+            item={item}
             index={idx + 1}
             items={items}
             setItems={setItems}
-            id={item.id}
           />
         ))}
       </ItemsContainer>
@@ -64,10 +64,9 @@ const Wrapper = styled.div`
   background-color: #02132e;
   padding: 8px;
   border-radius: 16px;
-  width: 100%;
-  height: 100%;
   flex:1;
-  min-width: 550px;
+  min-width: 0;
+  height: 95%;
 `;
 
 const Title = styled.div`
@@ -76,7 +75,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #02132e;
-  height: 80px;
+  height: 60px;
   border-top-radius: 16px;
   width: 100%;
   border-bottom: 1px solid gray;
@@ -84,15 +83,17 @@ const Title = styled.div`
   top: 0;
 `;
 
-const ItemsContainer = styled.div`
+export const ItemsContainer = styled.div`
   max-height: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const AddItem = styled.div`
@@ -100,7 +101,7 @@ const AddItem = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #02132e;
-  height: 80px;
+  height: 60px;
   border-bottom-radius: 16px;
   gap: 10px;
   cursor: pointer;
