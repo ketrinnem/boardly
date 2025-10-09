@@ -11,7 +11,6 @@ const Search = () => {
     <div>
       <TextField
         id="outlined-required"
-        defaultValue="Search"
         sx={{ backgroundColor: "white", borderRadius: "8px" }}
         InputProps={{
           startAdornment: (

@@ -19,6 +19,7 @@ const TodoColumn = (props: TodoColumnProps) => {
 
   const cardsText = items.length > 1 ? "cards" : "card";
 
+
   return (
     <Wrapper ref={reference}>
       <AddItemModal
@@ -38,7 +39,7 @@ const TodoColumn = (props: TodoColumnProps) => {
       <ItemsContainer>
         {items.map((item, idx) => (
           <ListItem
-            key={`${item.title}-${idx}`}
+            key={item.id}
             title={item.title}
             index={idx + 1}
             items={items}
@@ -63,9 +64,10 @@ const Wrapper = styled.div`
   background-color: #02132e;
   padding: 8px;
   border-radius: 16px;
-  width: 360px;
-  min-height: 500px;
+  width: 100%;
   height: 100%;
+  flex:1;
+  min-width: 550px;
 `;
 
 const Title = styled.div`
