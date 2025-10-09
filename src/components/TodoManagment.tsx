@@ -8,7 +8,7 @@ import {
 import styled from "@emotion/styled";
 import { useContext } from "react";
 import TodoColumn from "./TodoColumn";
-import { Droppable } from "./dnd/Droppable";
+import { Droppable } from "./Dnd/Droppable";
 import {
   arrayMove,
   SortableContext,
@@ -34,7 +34,7 @@ const TodoManagment = () => {
     id: "done",
   });
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: any) {
     const { active, over } = event;
 
     if (!over) return;
