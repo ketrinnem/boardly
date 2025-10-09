@@ -27,3 +27,5 @@ Run the app (npm run dev:app - client, npm run dev:api - server)
 ## Notes
 
 This is an early-stage project. Expect incomplete features and occasional bugs.
+
+Deployed app link: https://boardly-app.netlify.app/
