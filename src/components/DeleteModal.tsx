@@ -12,6 +12,8 @@ interface DeleteModalProps {
 const DeleteModal = (props: DeleteModalProps) => {
   const { isOpen, onCancel, onDelete } = props;
 
+  console.log(isOpen, '===> DeleteModal isOpen prop')
+
   return (
     <Modal open={isOpen}>
       <Wrapper>
@@ -59,6 +61,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  z-index: 1000;
 `;
 
 const ButtonWrapper = styled.div`

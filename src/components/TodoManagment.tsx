@@ -47,7 +47,7 @@ const TodoManagment = () => {
 
     const isOverColumn = typeof overId === "string" && overId.includes("-");
 
-    // ===> If dropped over a column
+    // If dropped over a column
     if (isOverColumn) {
       const newColumn = overId;
 
@@ -58,7 +58,7 @@ const TodoManagment = () => {
       return;
     }
 
-    // ===> Dropped over another item (reorder)
+    // Dropped over another item (reorder)
     const overItem = items.find((item) => item.id === overId);
     if (!overItem) return;
 
@@ -73,7 +73,7 @@ const TodoManagment = () => {
       return;
     }
 
-    // ===> Reordering within same column
+    // Reorder within the same column
     const columnItems = items.filter((item) => item.column === activeColumn);
     const oldIndex = columnItems.findIndex((item) => item.id === activeId);
     const newIndex = columnItems.findIndex((item) => item.id === overId);
@@ -90,7 +90,11 @@ const TodoManagment = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: "20px",
+            height: "650px",
+            maxHeight: "650px",
+            width: "100%",
+            justifyContent: "space-between",
+            padding: 16,
           }}
         >
           <Droppable id="todo">
@@ -169,8 +173,6 @@ const Wrapper = styled.div`
   border-radius: 16px;
 
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 16px;
 `;
