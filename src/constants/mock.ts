@@ -22,15 +22,15 @@ export const mockTodos = [
   },
   {
     id: 4,
-    title: "Read a chapter of book",
-    description: "Continue 'Clean Code' by Robert C. Martin",
-    priority: "low",
+    title: "Implement delete task functionality - frontend",
+    description: "",
+    priority: "high",
     column: "todo",
   },
   {
     id: 5,
-    title: "Pay rent",
-    description: "Transfer 900€ to landlord",
+    title: "Implement add new task functionality - frontend",
+    description: "",
     priority: "high",
     column: "done",
   },
@@ -39,7 +39,7 @@ export const mockTodos = [
     title: "Add search field and social links to header",
     description: "",
     priority: "medium",
-    column: "in-progress",
+    column: "done",
   },
   {
     id: 7,
@@ -62,4 +62,11 @@ export const mockTodos = [
     priority: "high",
     column: "todo",
   },
+  {
+    id: 10,
+    title: "Fix drag and drop bug",
+    description: "",
+    priority: "medium",
+    column: "in-progress",
+  }
 ];
