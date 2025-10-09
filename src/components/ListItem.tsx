@@ -1,42 +1,39 @@
 import styled from "@emotion/styled";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext, useEffect, useState } from "react";
-import DeleteModal from "./DeleteModal";
+import DeleteModal from "./Modal/DeleteModal";
 import { Draggable } from "./Dnd/Draggable";
 import { AppContext, Item } from "../context/AppContext";
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from "@mui/material/IconButton";
 
 interface ListItemProps {
-  title: string;
+  item: Item
   index: number;
   items: Item[];
   setItems: (items: Item[]) => void;
-  id: number;
+
 }
 
 const ListItem = (props: ListItemProps) => {
-  const { title, index, items, setItems, id } = props;
+  const { item, index, items, setItems, } = props;
   const { searchText } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
 
 
   const deleteItem = () => {
-    const tempItems = items.filter((item) => item.id !== id);
+    const tempItems = items.filter((it) => { console.log(it.id, item.id); return item.id !== it.id });
+    console.log(tempItems, '===> temp items after delete');
     setItems(tempItems);
     setIsOpen(false);
   };
 
 
-
-  useEffect(() => {
-    console.log(isOpen, '===> is open')
-  }, [isOpen])
-
   return (
-    <Draggable id={id}>
+    <Draggable id={item.id}>
       <Wrapper
         shouldDisplay={
           searchText === "" ||
-            title.toLowerCase().includes(searchText.toLowerCase())
+            item.title.toLowerCase().includes(searchText.toLowerCase())
             ? true
             : false
         }
@@ -52,25 +49,28 @@ const ListItem = (props: ListItemProps) => {
           <div
             style={{
               padding: "16px",
-              border: "2px dashed #ccc",
+              border: "1px dashed #ccc",
               borderRadius: "8px",
               minHeight: "100px",
             }}
           />
         )}
         <ItemContent>
-          <div>{index}</div>
-          <div>{title}</div>
+          <div>
+            <Title>{item.title}</Title>
+            <DescriptionText>{item.priority} priority, {item.type}, {item.origin}</DescriptionText>
+          </div>
         </ItemContent>
-        {/* <div
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsOpen(true);
-          }}
-          style={{ cursor: "pointer", zIndex: 3 }}
-        >
+
+        {/* <IconButton onMouseDown={(e) => {
+          e.stopPropagation();
+          console.log('clicked');
+          setIsOpen(true);
+        }}>
           <DeleteIcon />
-        </div> */}
+        </IconButton> */}
+
+
       </Wrapper>
     </Draggable>
   );
@@ -83,12 +83,11 @@ const Wrapper = styled.div<{ shouldDisplay?: boolean }>`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  height: 60px;
   border-bottom: 1px solid gray;
-  padding: 8px;
   cursor: pointer;
   border-radius: 8px;
-  height: 100%px;
+  height: 95%;
+  z-index: 9999;
 `;
 
 const ItemContent = styled.div`
@@ -98,6 +97,20 @@ const ItemContent = styled.div`
   flex-direction: row;
   gap: 20px;
   text-align: left;
+  height: 50px;
+`;
+
+const Title = styled.div`
+  font-weight: bold;
+  font-size: 12px;
+`;
+
+const DescriptionText = styled.div`
+  color: lightgray;
+  font-size: 8px;
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
 `;
 
 export default ListItem;

@@ -7,7 +7,7 @@ export function Droppable(props: any) {
   const style = {
     color: isOver ? "white" : undefined,
     height: "100%",
-
+    width: "25%",
   };
 
   return (

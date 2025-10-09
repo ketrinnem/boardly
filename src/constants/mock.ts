@@ -5,6 +5,8 @@ export const mockTodos = [
     description: "",
     priority: "high",
     column: "todo",
+    type: "feature",
+    origin: "backend",
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const mockTodos = [
     description: "Implement responsive header and deploy to Vercel",
     priority: "medium",
     column: "in-progress",
+    type: "feature",
+    origin: "full-stack",
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const mockTodos = [
     description: "Weekly check-in call",
     priority: "low",
     column: "in-review",
+    type: "feature",
+    origin: "backend",
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const mockTodos = [
     description: "",
     priority: "high",
     column: "todo",
+    type: "feature",
+    origin: "frontend",
   },
   {
     id: 5,
@@ -33,6 +41,8 @@ export const mockTodos = [
     description: "",
     priority: "high",
     column: "done",
+    type: "feature",
+    origin: "frontend",
   },
   {
     id: 6,
@@ -40,6 +50,8 @@ export const mockTodos = [
     description: "",
     priority: "medium",
     column: "done",
+    type: "feature",
+    origin: "frontend",
   },
   {
     id: 7,
@@ -47,6 +59,8 @@ export const mockTodos = [
     description: "",
     priority: "high",
     column: "done",
+    type: "feature",
+    origin: "frontend",
   },
   {
     id: 8,
@@ -54,6 +68,8 @@ export const mockTodos = [
     description: "",
     priority: "high",
     column: "done",
+    type: "feature",
+    origin: "frontend",
   },
   {
     id: 9,
@@ -61,6 +77,7 @@ export const mockTodos = [
     description: "",
     priority: "high",
     column: "todo",
+    type: "feature",
   },
   {
     id: 10,
@@ -68,5 +85,7 @@ export const mockTodos = [
     description: "",
     priority: "medium",
     column: "in-progress",
+    type: "bug",
+    origin: "frontend",
   }
 ];

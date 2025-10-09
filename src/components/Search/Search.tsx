@@ -11,7 +11,32 @@ const Search = () => {
     <div>
       <TextField
         id="outlined-required"
-        sx={{ backgroundColor: "white", borderRadius: "8px" }}
+        sx={{
+          width: "400px",
+          minWidth: 0,
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "lightgray",
+            },
+            "&:hover fieldset": {
+              borderColor: "lightgray",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "lightgray",
+            },
+            borderRadius: "8px",
+            backgroundColor: "white",
+            height: "30px",
+          },
+          "& .MuiInputBase-input": {
+            padding: "0 8px",
+            height: "30px",
+            fontSize: "14px",
+          },
+          backgroundColor: "white",
+          borderRadius: "8px",
+        }}
+        style={{ height: "30px" }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -19,6 +44,7 @@ const Search = () => {
             </InputAdornment>
           ),
         }}
+        placeholder="ex. Add header"
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value);
@@ -28,6 +54,5 @@ const Search = () => {
   );
 };
 
-const Wrapper = styled.div``;
 
 export default Search;
