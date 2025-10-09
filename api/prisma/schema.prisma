@@ -25,6 +25,14 @@ enum DBTaskPriority {
   CRITICAL
 }
 
+enum DBTaskStatus {
+  TODO
+  IN_PROGRESS
+  IN_REVIEW
+  READY_FOR_QA
+  DONE
+}
+
 model Task {
   id              String        @id @default(uuid())
   title           String
@@ -33,5 +41,6 @@ model Task {
   priority        DBTaskPriority
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
+  status          DBTaskStatus    
   // add atachments, add created by, add edited by
 }
