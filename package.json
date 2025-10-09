@@ -10,7 +10,7 @@
   "scripts": {
     "dev:app": "vite --config vite.config.js",
     "dev:api": "npm run start:dev --prefix api",
-    "build:app": "vite build --configvite.config.js",
+    "build:app": "vite build --config vite.config.js",
     "build:api": "npm run build --prefix api",
     "build": "npm run build:app && npm run build:api",
     "lint": "eslint .",
