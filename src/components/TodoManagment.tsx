@@ -12,8 +12,6 @@ import TodoColumn, { ItemsContainer } from "./TodoColumn";
 import { Droppable } from "./Dnd/Droppable";
 import {
   arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { AppContext } from "../context/AppContext";
 import ListItem from "./ListItem";
@@ -21,7 +19,7 @@ import ListItem from "./ListItem";
 const TodoManagment = () => {
   const sensors = useSensors(useSensor(PointerSensor));
 
-  const { items, setItems } = useContext(AppContext);
+  const { items, setItems, searchText } = useContext(AppContext);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [activeItemRect, setActiveItemRect] = useState<{ width: number; height: number } | null>(null);
 
@@ -105,6 +103,12 @@ const TodoManagment = () => {
 
   const activeItem = items.find((i) => i.id === activeId);
 
+
+  const shouldDisplay = searchText === "" ||
+    (activeItem && activeItem.title.toLowerCase().includes(searchText.toLowerCase()))
+    ? true
+    : false
+
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart} sensors={sensors}>
       <Wrapper>
@@ -147,21 +151,24 @@ const TodoManagment = () => {
         </Container>
       </Wrapper>
 
-      <DragOverlay>
-        <ItemsContainer style={{ overflowY: "hidden", opacity: 0.8, width: activeItemRect ? `${activeItemRect.width}px` : 'auto', height: activeItemRect ? `${activeItemRect.height}px` : 'auto' }}>
-          {activeItem ? (
+      < DragOverlay >
+        {activeItem ? (
+          <ItemsContainer style={{ overflowY: "hidden", opacity: 0.8, width: activeItemRect ? `${activeItemRect.width}px` : 'auto', height: activeItemRect ? `${activeItemRect.height}px` : 'auto' }}>
+
             <ListItem
               item={activeItem}
               index={0}
               items={items}
               setItems={setItems}
             />
-          ) : null}
-        </ItemsContainer>
+          </ItemsContainer>
+        ) : null}
+
       </DragOverlay>
 
 
-    </DndContext>
+
+    </DndContext >
   );
 };
 
