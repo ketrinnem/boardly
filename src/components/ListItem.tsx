@@ -56,10 +56,12 @@ const ListItem = (props: ListItemProps) => {
           />
         )}
         <ItemContent>
-          <div>
-            <Title>{item.title}</Title>
-            <DescriptionText>{item.priority} priority, {item.type}, {item.origin}</DescriptionText>
-          </div>
+          <div style={{ fontSize: '10px', display: 'flex', justifyContent: 'start', width: '100%' }}>ID-{item.id}</div>
+
+          <Title>{item.title}</Title>
+
+
+          <DescriptionText>{item.priority} priority, {item.type}, {item.origin}</DescriptionText>
         </ItemContent>
 
         {/* <IconButton onMouseDown={(e) => {
@@ -83,7 +85,6 @@ const Wrapper = styled.div<{ shouldDisplay?: boolean }>`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1px solid gray;
   cursor: pointer;
   border-radius: 8px;
   height: 95%;
@@ -92,13 +93,14 @@ const Wrapper = styled.div<{ shouldDisplay?: boolean }>`
 
 const ItemContent = styled.div`
   display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-direction: row;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  gap: 5px;
   text-align: left;
-  height: 50px;
+  height: 80px;
   margin-left: 5px;
+  padding: 5px;
 `;
 
 const Title = styled.div`
