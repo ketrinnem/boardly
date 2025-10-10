@@ -1,21 +1,30 @@
 
-import React from 'react';
-import { useDraggable, DragOverlay } from '@dnd-kit/core';
+import React, { useContext } from 'react';
+import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
+import { AppContext } from '../../context/AppContext';
 
 export function Draggable(props: any) {
+    const { searchText } = useContext(AppContext);
     const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
         id: props.id,
     });
+
+
+    const shouldDisplay = searchText === "" ||
+        props.item.title.toLowerCase().includes(searchText.toLowerCase())
+        ? true
+        : false
+
     const style = {
         transform: CSS.Translate.toString(transform),
-        backgroundColor: "#3e69ad",
-        opacity: isDragging ? 0 : 1
+        opacity: isDragging ? 0 : 1,
+        display: shouldDisplay ? 'flex' : 'none',
     };
 
     return (
-        <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
+        <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
             {props.children}
-        </button>
+        </div>
     );
 }

@@ -27,16 +27,16 @@ const ListItem = (props: ListItemProps) => {
     setIsOpen(false);
   };
 
+  const shouldDisplay = searchText === "" ||
+    item.title.toLowerCase().includes(searchText.toLowerCase())
+    ? true
+    : false
+
 
   return (
-    <Draggable id={item.id}>
+    <Draggable id={item.id} item={item}>
       <Wrapper
-        shouldDisplay={
-          searchText === "" ||
-            item.title.toLowerCase().includes(searchText.toLowerCase())
-            ? true
-            : false
-        }
+        shouldDisplay={shouldDisplay}
       >
         {isOpen &&
           <DeleteModal
@@ -72,7 +72,7 @@ const ListItem = (props: ListItemProps) => {
 
 
       </Wrapper>
-    </Draggable>
+    </Draggable >
   );
 };
 
@@ -87,7 +87,7 @@ const Wrapper = styled.div<{ shouldDisplay?: boolean }>`
   cursor: pointer;
   border-radius: 8px;
   height: 95%;
-  z-index: 9999;
+  width: 100%;
 `;
 
 const ItemContent = styled.div`
@@ -98,6 +98,7 @@ const ItemContent = styled.div`
   gap: 20px;
   text-align: left;
   height: 50px;
+  margin-left: 5px;
 `;
 
 const Title = styled.div`
