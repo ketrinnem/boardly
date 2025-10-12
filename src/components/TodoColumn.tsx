@@ -94,6 +94,34 @@ export const ItemsContainer = styled.div`
   height: 80%;
   overflow-y: auto;
   overflow-x: hidden;
+
+  
+  ::-webkit-scrollbar {
+    background-color: black;
+    width: 2px;
+    margin-left: 10px;
+  }
+
+  /* background of the scrollbar except button or resizer */
+  ::-webkit-scrollbar-track {
+    background-color: #02132e;
+  }
+
+  /* set button(top and bottom of the scrollbar) */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #02132e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+    width: 2px;
+    margin-left: 10px;
+  }
 `;
 
 const AddItem = styled.div`
