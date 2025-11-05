@@ -1,0 +1,1 @@
+{"version":3,"file":"tasks.js","sourceRoot":"","sources":["../../../../../prisma/seed/seeds/tasks.ts"],"names":[],"mappings":";;;AAAa,QAAA,KAAK,GAAG;IACjB;QACI,EAAE,EAAE,QAAQ;QACZ,KAAK,EAAE,0BAA0B;QACjC,WAAW,EAAE,oDAAoD;QACjE,MAAM,EAAE,MAAM;QACd,QAAQ,EAAE,MAAM;QAChB,OAAO,EAAE,IAAI,IAAI,CAAC,YAAY,CAAC;KAClC;CACJ,CAAC"}
