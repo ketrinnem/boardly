@@ -10,9 +10,7 @@ import styled from "@emotion/styled";
 import { useContext, useState } from "react";
 import TodoColumn, { ItemsContainer } from "./TodoColumn";
 import { Droppable } from "./Dnd/Droppable";
-import {
-  arrayMove,
-} from "@dnd-kit/sortable";
+import { arrayMove } from "@dnd-kit/sortable";
 import { AppContext } from "../context/AppContext";
 import ListItem from "./ListItem";
 
@@ -21,7 +19,10 @@ const TodoManagment = () => {
 
   const { items, setItems, searchText } = useContext(AppContext);
   const [activeId, setActiveId] = useState<number | null>(null);
-  const [activeItemRect, setActiveItemRect] = useState<{ width: number; height: number } | null>(null);
+  const [activeItemRect, setActiveItemRect] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
 
   const { setNodeRef: setTodoNodeRef } = useDroppable({
     id: "todo",
@@ -36,12 +37,13 @@ const TodoManagment = () => {
     id: "done",
   });
 
-
   function handleDragStart(event: any) {
     const active = event.active;
     setActiveId(active.id);
 
-    const activeElement = document.querySelector(`[data-id='${active.id}']`) as HTMLElement;
+    const activeElement = document.querySelector(
+      `[data-id='${active.id}']`,
+    ) as HTMLElement;
     if (activeElement) {
       const rect = activeElement.getBoundingClientRect();
       setActiveItemRect({ width: rect.width, height: rect.height });
@@ -68,7 +70,7 @@ const TodoManagment = () => {
       const newColumn = overId;
 
       const updatedItems = items.map((item) =>
-        item.id === activeId ? { ...item, column: newColumn } : item
+        item.id === activeId ? { ...item, column: newColumn } : item,
       );
       setItems(updatedItems);
       return;
@@ -83,7 +85,7 @@ const TodoManagment = () => {
 
     if (activeColumn !== overColumn) {
       const updatedItems = items.map((item) =>
-        item.id === activeId ? { ...item, column: overColumn } : item
+        item.id === activeId ? { ...item, column: overColumn } : item,
       );
       setItems(updatedItems);
       return;
@@ -103,14 +105,19 @@ const TodoManagment = () => {
 
   const activeItem = items.find((i) => i.id === activeId);
 
-
-  const shouldDisplay = searchText === "" ||
-    (activeItem && activeItem.title.toLowerCase().includes(searchText.toLowerCase()))
-    ? true
-    : false
+  const shouldDisplay =
+    searchText === "" ||
+    (activeItem &&
+      activeItem.title.toLowerCase().includes(searchText.toLowerCase()))
+      ? true
+      : false;
 
   return (
-    <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart} sensors={sensors}>
+    <DndContext
+      onDragEnd={handleDragEnd}
+      onDragStart={handleDragStart}
+      sensors={sensors}
+    >
       <Wrapper>
         <Container>
           <Droppable id="todo">
@@ -151,10 +158,16 @@ const TodoManagment = () => {
         </Container>
       </Wrapper>
 
-      < DragOverlay >
+      <DragOverlay>
         {activeItem ? (
-          <ItemsContainer style={{ overflowY: "hidden", opacity: 0.8, width: activeItemRect ? `${activeItemRect.width}px` : 'auto', height: activeItemRect ? `${activeItemRect.height}px` : 'auto' }}>
-
+          <ItemsContainer
+            style={{
+              overflowY: "hidden",
+              opacity: 0.8,
+              width: activeItemRect ? `${activeItemRect.width}px` : "auto",
+              height: activeItemRect ? `${activeItemRect.height}px` : "auto",
+            }}
+          >
             <ListItem
               item={activeItem}
               index={0}
@@ -163,12 +176,8 @@ const TodoManagment = () => {
             />
           </ItemsContainer>
         ) : null}
-
       </DragOverlay>
-
-
-
-    </DndContext >
+    </DndContext>
   );
 };
 
@@ -176,7 +185,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   position: fixed;
   top: 60px;
   left: 0;
@@ -184,18 +193,19 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
- display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;    
+  align-items: stretch;
   width: 100%;
   background-color: white;
   height: 100%;
-  flex-wrap: nowrap;        
+  flex-wrap: nowrap;
   gap: 16px;
   padding: 16px;
   box-sizing: border-box;
-  overflow-x: hidden; 
-  height: 100%;    `
+  overflow-x: hidden;
+  height: 100%;
+`;
 
 export default TodoManagment;

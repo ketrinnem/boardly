@@ -3,47 +3,47 @@ import { useContext, useEffect, useState } from "react";
 import DeleteModal from "./Modal/DeleteModal";
 import { Draggable } from "./Dnd/Draggable";
 import { AppContext, Item } from "../context/AppContext";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 
 interface ListItemProps {
-  item: Item
+  item: Item;
   index: number;
   items: Item[];
   setItems: (items: Item[]) => void;
-
 }
 
 const ListItem = (props: ListItemProps) => {
-  const { item, index, items, setItems, } = props;
+  const { item, index, items, setItems } = props;
   const { searchText } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
 
-
   const deleteItem = () => {
-    const tempItems = items.filter((it) => { console.log(it.id, item.id); return item.id !== it.id });
-    console.log(tempItems, '===> temp items after delete');
+    const tempItems = items.filter((it) => {
+      console.log(it.id, item.id);
+      return item.id !== it.id;
+    });
+    console.log(tempItems, "===> temp items after delete");
     setItems(tempItems);
     setIsOpen(false);
   };
 
-  const shouldDisplay = searchText === "" ||
+  const shouldDisplay =
+    searchText === "" ||
     item.title.toLowerCase().includes(searchText.toLowerCase())
-    ? true
-    : false
-
+      ? true
+      : false;
 
   return (
     <Draggable id={item.id} item={item}>
-      <Wrapper
-        shouldDisplay={shouldDisplay}
-      >
-        {isOpen &&
+      <Wrapper shouldDisplay={shouldDisplay}>
+        {isOpen && (
           <DeleteModal
             isOpen={isOpen}
             onCancel={() => setIsOpen(false)}
             onDelete={deleteItem}
-          />}
+          />
+        )}
 
         {items.length === 0 && (
           <div
@@ -56,12 +56,22 @@ const ListItem = (props: ListItemProps) => {
           />
         )}
         <ItemContent>
-          <div style={{ fontSize: '10px', display: 'flex', justifyContent: 'start', width: '100%' }}>ID-{item.id}</div>
+          <div
+            style={{
+              fontSize: "10px",
+              display: "flex",
+              justifyContent: "start",
+              width: "100%",
+            }}
+          >
+            ID-{item.id}
+          </div>
 
           <Title>{item.title}</Title>
 
-
-          <DescriptionText>{item.priority} priority, {item.type}, {item.origin}</DescriptionText>
+          <DescriptionText>
+            {item.priority} priority, {item.type}, {item.origin}
+          </DescriptionText>
         </ItemContent>
 
         {/* <IconButton onMouseDown={(e) => {
@@ -71,10 +81,8 @@ const ListItem = (props: ListItemProps) => {
         }}>
           <DeleteIcon />
         </IconButton> */}
-
-
       </Wrapper>
-    </Draggable >
+    </Draggable>
   );
 };
 

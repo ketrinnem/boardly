@@ -3,7 +3,7 @@ class TokenService {
   public key: string;
 
   constructor() {
-    this.key = '@@apiToken';
+    this.key = "@@apiToken";
   }
 
   public get = (): string | undefined => {

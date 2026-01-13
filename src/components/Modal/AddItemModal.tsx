@@ -1,5 +1,12 @@
 import styled from "@emotion/styled";
-import { Button, FormControl, MenuItem, Modal, Select, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  MenuItem,
+  Modal,
+  Select,
+  TextField,
+} from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
@@ -35,9 +42,8 @@ const AddItemModal = (props: AddItemModal) => {
     description: "",
     priority: "low",
     column,
-    type: "feature"
+    type: "feature",
   });
-
 
   const onAdd = () => {
     setItems(items.concat(data));
@@ -51,7 +57,6 @@ const AddItemModal = (props: AddItemModal) => {
           <Header>ADD NEW TASK</Header>
           <CloseIcon onClick={onCancel} style={{ color: "white" }} />
         </HeaderWrapper>
-
 
         <div
           style={{
@@ -99,7 +104,7 @@ const AddItemModal = (props: AddItemModal) => {
 
           <FormControl sx={{ m: 0, minWidth: 120 }}>
             <Select
-              value={data.priority ?? ''}
+              value={data.priority ?? ""}
               onChange={(e) => {
                 setData((prevState) => ({
                   ...prevState,
@@ -127,7 +132,7 @@ const AddItemModal = (props: AddItemModal) => {
 
           <FormControl sx={{ m: 0, minWidth: 120 }}>
             <Select
-              value={data.type ?? ''}
+              value={data.type ?? ""}
               onChange={(e) => {
                 setData((prevState) => ({
                   ...prevState,
@@ -139,7 +144,6 @@ const AddItemModal = (props: AddItemModal) => {
                 backgroundColor: "white",
                 borderRadius: "8px",
               }}
-
               label="Type"
             >
               <MenuItem value="">
@@ -152,8 +156,6 @@ const AddItemModal = (props: AddItemModal) => {
               ))}
             </Select>
           </FormControl>
-
-
         </div>
 
         <ButtonWrapper>
@@ -215,8 +217,8 @@ const HeaderWrapper = styled.div`
   justify-content: end;
   align-items: center;
   width: 100%;
-  cursor: pointer;         
-`
+  cursor: pointer;
+`;
 
 const Header = styled.div`
   width: 100%;

@@ -87,5 +87,5 @@ export const mockTodos = [
     column: "in-progress",
     type: "bug",
     origin: "frontend",
-  }
+  },
 ];

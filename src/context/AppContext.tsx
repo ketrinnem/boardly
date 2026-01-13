@@ -20,9 +20,9 @@ interface IAppContext {
 
 export const AppContext = React.createContext<IAppContext>({
   items: mockTodos,
-  setItems: () => { },
+  setItems: () => {},
   searchText: "",
-  setSearchText: () => { },
+  setSearchText: () => {},
 });
 
 export const useAppContext = (): IAppContext => {

@@ -20,7 +20,6 @@ const TodoColumn = (props: TodoColumnProps) => {
 
   const cardsText = items.length > 1 ? "cards" : "card";
 
-
   return (
     <Wrapper ref={reference}>
       <AddItemModal
@@ -64,7 +63,7 @@ const Wrapper = styled.div`
   background-color: #02132e;
   padding: 8px;
   border-radius: 16px;
-  flex:1;
+  flex: 1;
   min-width: 0;
   height: 95%;
 `;
@@ -95,7 +94,6 @@ export const ItemsContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
 
-  
   ::-webkit-scrollbar {
     background-color: black;
     width: 2px;

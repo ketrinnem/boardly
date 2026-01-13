@@ -14,7 +14,8 @@
     "build:api": "npm run build --prefix api",
     "build": "npm run build:app && npm run build:api",
     "lint": "eslint .",
-    "preview": "vite preview --config vite.config.js"
+    "preview": "vite preview --config vite.config.js",
+    "format": "prettier --write \"./**/*.{ts,tsx,js,json,md}\" \"api/**/*.{ts,js,json,md}\" \"libs/**/*.{ts,js,json,md}\""
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

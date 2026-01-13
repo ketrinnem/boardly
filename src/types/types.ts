@@ -1,4 +1,4 @@
 export interface SelectInputType {
-    label: string;
-    value: string | number;
+  label: string;
+  value: string | number;
 }
