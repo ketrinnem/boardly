@@ -34,9 +34,10 @@ const ListItem = (props: ListItemProps) => {
 
 
   return (
-    <Draggable id={item.id} item={item}>
+    <Draggable id={item.id} item={item} >
       <Wrapper
         shouldDisplay={shouldDisplay}
+        onClick={() => console.log('clicked')}
       >
         {isOpen &&
           <DeleteModal
