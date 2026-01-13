@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 import Search from "./Search/Search";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Link } from "@mui/material";
+import { Link, Popover, Tooltip } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Header = () => {
   return (
@@ -31,6 +32,10 @@ const Header = () => {
           >
             <LinkedInIcon />
           </Link>
+
+          <Tooltip title="Viewing as a guest user">
+            < AccountCircleIcon />
+          </Tooltip>
         </div>
       </Container>
     </Wrapper>
