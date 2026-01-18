@@ -16,6 +16,8 @@ interface IAppContext {
   setItems: (items: Item[]) => void;
   searchText: string;
   setSearchText: (a: string) => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: (a: boolean) => void;
 }
 
 export const AppContext = React.createContext<IAppContext>({
@@ -23,13 +25,16 @@ export const AppContext = React.createContext<IAppContext>({
   setItems: () => {},
   searchText: "",
   setSearchText: () => {},
+  isLoggedIn: false,
+  setIsLoggedIn: () => {}
 });
 
 export const useAppContext = (): IAppContext => {
   const [items, setItems] = useState<Item[]>(mockTodos);
   const [searchText, setSearchText] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  return { items, setItems, searchText, setSearchText };
+  return { items, setItems, searchText, setSearchText, isLoggedIn, setIsLoggedIn };
 };
 
 interface AppProviderProps {
