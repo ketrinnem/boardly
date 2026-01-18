@@ -1,3 +1,8 @@
 node_modules
 /generated/prisma
 .env
+
+# build outputs
+dist/
+api/dist/
+
