@@ -20,7 +20,6 @@ const SignUpPage = () => {
       return;
     }
 
-    // Normally you would send data to backend here
     console.log("User created:", { name, email, password });
 
     setIsLoggedIn(true);

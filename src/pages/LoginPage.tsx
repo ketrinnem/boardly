@@ -1,17 +1,3 @@
-//  import  {  useContext } from 'react';
-// import {AppContext} from '../context/AppContext';
-// import { useNavigate } from "react-router-dom";
- 
-//  const LoginPage = () => {
-
-//   const navigate = useNavigate();
-//   const {isLoggedIn, setIsLoggedIn} = useContext(AppContext);
-//   return <div onClick={() => {setIsLoggedIn(true); navigate("/dashboard");}} style={{cursor: 'pointer'}}>Login Page
-//   </div>;
-// };
-
-// export default LoginPage
-
 import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +12,7 @@ const LoginPage = () => {
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // very basic validation
+    // basic validation
     if (!email || !password) {
       alert("Please enter email and password");
       return;
@@ -122,4 +108,3 @@ const styles = {
 };
 
 export default LoginPage;
-

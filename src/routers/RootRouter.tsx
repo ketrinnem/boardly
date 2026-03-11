@@ -1,4 +1,3 @@
-// src/router/AppRouter.jsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
@@ -14,10 +13,8 @@ import { AppContext } from "../context/AppContext";
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-
         <Route
           path="/dashboard"
           element={
